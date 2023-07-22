@@ -6,6 +6,7 @@ import com.arge.utilities.ConfigurationReader;
 import com.arge.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class Career_StepDefs {
 
@@ -41,7 +42,6 @@ public class Career_StepDefs {
 
     @Then("The user should apply for job")
     public void the_user_should_apply_for_job() {
-        System.out.println("jobName = " + jobName);
         careerPage.applyJob(jobName);
         careerPage.apply.click();
     }
@@ -49,11 +49,6 @@ public class Career_StepDefs {
     @Then("The user should fill the apply for this position list with {string}, {string}, {string}, {string}")
     public void the_user_should_fill_the_apply_for_this_position_list_with(String firstName, String lastName, String email, String telephone) {
         careerPage.fillTheApplicationList(firstName, lastName, email, telephone);
-    }
-
-    @Then("The user should add the resume")
-    public void the_user_should_add_the_resume() {
-
     }
 
     @Then("The user should add the github url {string}")
@@ -73,11 +68,11 @@ public class Career_StepDefs {
 
     @Then("The user should submit application")
     public void the_user_should_submit_application() {
-
+        careerPage.send.click();
     }
 
     @Then("The user should see {string} message")
-    public void the_user_should_see_message(String string) {
-
-    }
+    public void the_user_should_see_message(String message) {
+        Assert.assertEquals(careerPage.verification.getText(),message);
+       }
 }

@@ -27,6 +27,8 @@ public class CareerPage extends BasePage{
     public WebElement description;
     @FindBy(xpath = "//button[@data-testid='buttonElement']")
     public WebElement send;
+    @FindBy(className = "xYlb7P")
+    public WebElement verification;
     Actions actions=new Actions(Driver.get());
     public void chooseJob(String job){
         Driver.get().findElement(By.xpath("//span[text()='"+job+"']")).click();
